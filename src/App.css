@@ -4,6 +4,7 @@
     align-items: center;
     box-sizing: border-box;
     flex-direction: column;
+    position: relative;
 }
 
 .title-section h1 {
@@ -64,4 +65,93 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background: skyblue;
+    width: 100%;
+    height: 200vh;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+#prompt {
+    position: absolute;
+    top: 14rem;
+}
+
+.pokemonCard {
+    background: teal;
+    border: 1px solid rgb(211, 8, 49);
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 10rem;
+    margin-bottom: 5rem;
+    border-radius: 10px;
+    position: relative;
+    bottom: 15rem;
+}
+
+.pokemon-name {
+    font-size: 3.4rem;
+    text-shadow: 1px 1px 1px whitesmoke;
+    background: white;
+    width: 20rem;
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: 
+    -1px -1px 1px black,
+    1px 1px 1px black;
+}
+
+.species-tag {
+    font-size: 1.5rem;
+    background: #4b6cbee8;
+    width: 75%;
+    border-radius: 5px;
+    border: 1px solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    font-size: 1.2rem;
+    margin-top: 0;
+    background: whitesmoke;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    border: 2px solid black;
+    border-radius: 5px;
+    list-style: square;
+    padding-bottom: 14px;
+    padding-top: 10px;
+}
+
+li {
+    border-bottom: 1px solid black;
+    padding-bottom: 2px;
+}
+
+.id-div {
+    width: 95%;
+    display: flex;
+    position: relative;
+    top: 5px;
+    padding: 5px;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+#id-no {
+    position: relative;
+    top: 1px;
+    background: gold;
+    border: 1px solid black;
+    padding: 2px;
+    border-radius: 5px;
 }

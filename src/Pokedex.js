@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
 import Axios from 'axios'; 
 import './App.css';
-// import PokemonCard from './components/PokemonCard';
+
 
 
 const Pokedex = () => {
@@ -47,7 +47,7 @@ const Pokedex = () => {
         className='poke-search' 
         placeholder='Find Pokemon' 
         onChange={(e) => {
-          setPokemonName(e.target.value)
+          setPokemonName(e.target.value);
         }}
           />
        <button type='submit' onClick={searchPokemon}>Search</button>
@@ -56,15 +56,18 @@ const Pokedex = () => {
 
     <div className='display-section'>
       {!pokemonChosen ? (
-        <h1>Please choose a pokemon</h1>
+        <h1 id='prompt'>Please choose a pokemon</h1>
         ) : (
           <div className="pokemonCard">
-          <h1>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
+          <div className="id-div">
+          <span id='id-no'>#{pokemon.id}</span> 
+          </div>
+          <h1 className='pokemon-name'>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
           <img src={pokemon.img} alt={pokemon.name} />
-          <h3>Species: {pokemon.species.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h3>
+          <h3 className='species-tag'>Species: {pokemon.species.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h3>
           
           <ul className='stats'>
-            <li>Type: {pokemon.type}</li>
+            <li>Type: {pokemon.type.charAt(0).toUpperCase() + pokemon.type.slice(1)}</li>
             <li>HP: {pokemon.hp}</li>
             <li>Attack: {pokemon.attack}</li>
             <li>Defense: {pokemon.defense}</li>
