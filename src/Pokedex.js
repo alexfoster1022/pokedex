@@ -6,8 +6,8 @@ import './App.css';
 
 const Pokedex = () => {
   const [ pokemonName, setPokemonName ] = useState('');
-  const [pokemonChosen, setPokemonChosen] = useState(false);
-  const [pokemon, setPokemon] = useState({
+  const [pokemonChosen, setPokemonChosen ] = useState(false);
+  const [pokemon, setPokemon ] = useState({
     id: '',
     name: '',
     species: '',
@@ -17,6 +17,7 @@ const Pokedex = () => {
     defense: '',
     type: ''
   });
+  const [ errors, setErrors ] = useState([]);
 
 
   const searchPokemon = () => {
@@ -33,9 +34,12 @@ const Pokedex = () => {
           type: response.data.types[0].type.name 
         });
         setPokemonChosen(true);
-      }
-    );
+      }).catch((e)  => {
+        setErrors(e.response.data.errors);
+      });
   };
+
+
 
    return (
      <div className='App'>
@@ -48,6 +52,9 @@ const Pokedex = () => {
         placeholder='Find Pokemon' 
         onChange={(e) => {
           setPokemonName(e.target.value);
+          if (errors === 404) {
+            document.getElementById('prompt').innerText = errors;
+          }
         }}
           />
        <button type='submit' onClick={searchPokemon}>Search</button>
@@ -55,6 +62,7 @@ const Pokedex = () => {
        </div>
 
     <div className='display-section'>
+     
       {!pokemonChosen ? (
         <h1 id='prompt'>Please choose a pokemon</h1>
         ) : (
