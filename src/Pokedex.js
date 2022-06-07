@@ -1,6 +1,7 @@
 import { React, useState } from 'react';
 import Axios from 'axios'; 
 import './App.css';
+import { render } from '@testing-library/react';
 
 
 
@@ -53,7 +54,7 @@ const Pokedex = () => {
         onChange={(e) => {
           setPokemonName(e.target.value);
           if (errors === 404) {
-            document.getElementById('prompt').innerText = errors;
+            alert(errors[0]);
           }
         }}
           />
