@@ -18,7 +18,7 @@ const Pokedex = () => {
     defense: '',
     type: ''
   });
-  const [ errors, setErrors ] = useState([]);
+  const [ errors, setErrors ] = useState(undefined);
 
 
   const searchPokemon = () => {
@@ -34,14 +34,14 @@ const Pokedex = () => {
           defense: response.data.stats[2].base_stat,
           type: response.data.types[0].type.name 
         });
-        setPokemonChosen(true);
       }).catch((e)  => {
         setErrors(e.response.data.errors);
-      });
-  };
-
-
-
+        errors !== undefined ? (
+          setPokemonChosen(true)) : (
+            alert(`Pokemon not found`)
+          );
+      })
+     };
    return (
      <div className='App'>
        <div className='title-section'>
@@ -53,9 +53,6 @@ const Pokedex = () => {
         placeholder='Find Pokemon' 
         onChange={(e) => {
           setPokemonName(e.target.value);
-          if (errors === 404) {
-            alert(errors[0]);
-          }
         }}
           />
        <button type='submit' onClick={searchPokemon}>Search</button>
@@ -63,7 +60,6 @@ const Pokedex = () => {
        </div>
 
     <div className='display-section'>
-     
       {!pokemonChosen ? (
         <h1 id='prompt'>Please choose a pokemon</h1>
         ) : (
@@ -82,9 +78,9 @@ const Pokedex = () => {
             <li>Defense: {pokemon.defense}</li>
           </ul> 
         </div>
-      )}
+      )
+    }   
     </div>
-
     </div>
    )
 }
