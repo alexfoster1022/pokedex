@@ -36,10 +36,7 @@ const Pokedex = () => {
         });
       }).catch((e)  => {
         setErrors(e.response.data.errors);
-        errors !== undefined ? (
-          setPokemonChosen(true)) : (
-            alert(`Pokemon not found`)
-          );
+        console.log(errors)
       })
      };
    return (
@@ -62,6 +59,8 @@ const Pokedex = () => {
     <div className='display-section'>
       {!pokemonChosen ? (
         <h1 id='prompt'>Please choose a pokemon</h1>
+      ) : pokemonChosen && errors ? (
+        <div>Oops</div>
         ) : (
           <div className="pokemonCard">
           <div className="id-div">
